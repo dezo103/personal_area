@@ -12,12 +12,49 @@ export const ContactsList = () => {
         {id: v1(), name: 'nas'},
         {id: v1(), name: 'das'},
         {id: v1(), name: 'mas'},
-        {id: v1(), name: 'zas'}
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
+        {id: v1(), name: 'zas'},
     ]
 
     return (
         <ul className = {style.contactList}>
-            {contacts.map(c => <Contact contactName = {c.name}/>)}
+            {contacts.map(c => <Contact contactName = {c.name} key={c.id}/>)}
         </ul>
     );
 };
