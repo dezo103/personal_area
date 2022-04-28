@@ -1,11 +1,15 @@
 import React from 'react';
+import AppBar from '@mui/material/AppBar';
 
 import './App.scss';
+import {ContactsArea} from '../components/ContactsArea/ContactsArea';
+
 
 function App() {
   return (
     <div className="App">
-      personalArea
+        <AppBar position="static">hihi</AppBar>
+        <ContactsArea  />
     </div>
   );
 }
