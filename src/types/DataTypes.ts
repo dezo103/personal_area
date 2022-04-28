@@ -3,3 +3,6 @@ export type ContactType = {
     name: string
 }
 
+
+
+//export type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType>

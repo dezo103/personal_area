@@ -13,7 +13,9 @@ export const ContactsList = () => {
 
     return (
         <ul className = {style.contactList}>
-            {contacts.map(c => <Contact contactName = {c.name} key={c.id}/>)}
+            {contacts.map(c => <Contact contactName = {c.name}
+                                        key={c.id}
+                                        id = {c.id}/>)}
         </ul>
     );
 };
