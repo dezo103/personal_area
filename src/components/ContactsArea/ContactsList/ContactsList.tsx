@@ -1,56 +1,15 @@
 import React from 'react';
-import {v1} from 'uuid';
 
 import {Contact} from './Contact/Contact';
 import style from './ContactsList.module.scss';
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../../redux/store";
+import {ContactType} from "../../../types/DataTypes";
 
 
 export const ContactsList = () => {
 
-    const contacts = [
-        {id: v1(), name: 'has'},
-        {id: v1(), name: 'nas'},
-        {id: v1(), name: 'das'},
-        {id: v1(), name: 'mas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-        {id: v1(), name: 'zas'},
-    ]
+    const contacts = useSelector<AppRootStateType, Array<ContactType>>(state => state.contacts)
 
     return (
         <ul className = {style.contactList}>
