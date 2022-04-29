@@ -3,10 +3,15 @@ import {v1} from "uuid";
 
 
 const initialState: Array<ContactType> = [
-    // {id: v1(), name: 'has'},
+    {id: v1(), name: 'Sun'},
+    {id: v1(), name: 'Sunflower'},
+    {id: v1(), name: 'flower'},
+    {id: v1(), name: 'flow'},
+    {id: v1(), name: 'low'},
 ]
 
-export const contactsReducer = (state: Array<ContactType> = initialState, action: ActionsType): Array<ContactType> => {
+export const contactsReducer =
+    (state: Array<ContactType> = initialState, action: ActionsType): Array<ContactType> => {
     switch (action.type) {
         case 'REMOVE-CONTACT':
             return [...state.filter(c => c.id !== action.id)]

@@ -5,6 +5,18 @@ export type ContactType = {
     name: string
 }
 
+export type ContactsListPropsType = {
+    contacts: Array<ContactType>
+}
+
+export type AddContactFormPropsType = {
+    filterContacts: (value: string) => void
+}
+
+export type SearchFormPropsType = {
+    filterContacts: (value: string) => void
+}
+
 
 export type ActionsType =
     ReturnType<typeof removeContactAC>

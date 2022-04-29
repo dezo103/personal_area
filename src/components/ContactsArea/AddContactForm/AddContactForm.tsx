@@ -6,9 +6,11 @@ import Card from '@mui/material/Card';
 import style from './AddContactForm.module.scss';
 import {useAppDispatch} from "../../../redux/store";
 import {addContactTC} from "../../../redux/creators";
+import {SearchForm} from "./SearchForm/SearchForm";
+import {AddContactFormPropsType} from "../../../types/DataTypes";
 
 
-export const AddContactForm = () => {
+export const AddContactForm = (props: AddContactFormPropsType) => {
 
     let [title, setTitle] = useState('')
     let [error, setError] = useState<string | null>(null)
@@ -22,7 +24,6 @@ export const AddContactForm = () => {
         } else {
             setError('Title is required');
         }
-        console.log()
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +41,7 @@ export const AddContactForm = () => {
 
     return (
         <Card className={style.addContactFormContainer}>
-            <TextField label="Find contacts"/>
+            <SearchForm filterContacts = {props.filterContacts}/>
             <TextField label="Add contacts"
                        onChange={onChangeHandler}
                        onKeyPress={onKeyPressHandler}
