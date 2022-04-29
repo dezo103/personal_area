@@ -3,9 +3,13 @@
   top: 50px;
   right: 50px;
   display: flex;
+  //align-items: center;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   gap: 20px;
   background-color: #fff;
+  & Button {
+    max-height: 40px;
+  }
 }

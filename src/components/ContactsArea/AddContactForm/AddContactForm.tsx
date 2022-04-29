@@ -4,19 +4,24 @@ import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 
 import style from './AddContactForm.module.scss';
+import {useAppDispatch} from "../../../redux/store";
+import {addContactTC} from "../../../redux/contacts-reducer";
 
 export const AddContactForm = () => {
 
     let [title, setTitle] = useState('')
     let [error, setError] = useState<string | null>(null)
 
+    const dispatch = useAppDispatch();
+
     const addItemHandler = () => {
-        // if (title.trim() !== '') {
-        //     addItem(title);
-        //     setTitle('');
-        // } else {
-        //     setError('Title is required');
-        // }
+        if (title.trim() !== '') {
+            // addItem(title);
+            dispatch(addContactTC(title))
+            setTitle('');
+        } else {
+            setError('Title is required');
+        }
         console.log()
     }
 
@@ -34,11 +39,15 @@ export const AddContactForm = () => {
     }
 
     return (
-        <Card className = {style.addContactFormContainer}>
+        <Card className={style.addContactFormContainer}>
             <TextField label="Find contacts"/>
             <TextField label="Add contacts"
                        onChange={onChangeHandler}
-                       onKeyPress={onKeyPressHandler}/>
+                       onKeyPress={onKeyPressHandler}
+                       helperText={error}
+                       //disabled={disabled}
+                       error={!!error}
+                       value={title}/>
             <Button variant='contained'
                     color='success'
                     size='large'

@@ -2,9 +2,9 @@ import React from 'react';
 
 import {Contact} from './Contact/Contact';
 import style from './ContactsList.module.scss';
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../../redux/store";
-import {ContactType} from "../../../types/DataTypes";
+import {useSelector} from 'react-redux';
+import {AppRootStateType} from '../../../redux/store';
+import {ContactType} from '../../../types/DataTypes';
 
 
 export const ContactsList = () => {
