@@ -1,8 +1,5 @@
-import {ContactType} from '../types/DataTypes';
+import {ActionsType, ContactType} from '../types/DataTypes';
 import {v1} from "uuid";
-import {AnyAction} from 'redux';
-import {ThunkDispatch} from "redux-thunk";
-import {AppRootStateType} from "./store";
 
 
 const initialState: Array<ContactType> = [
@@ -22,27 +19,8 @@ export const contactsReducer = (state: Array<ContactType> = initialState, action
     }
 }
 
-export const removeContactAC = (id: string) => ({type: 'REMOVE-CONTACT', id} as const)
-
-export const removeContactTC = (id: string) => (dispatch: ThunkDispatch<AppRootStateType, void, AnyAction>) => {
-    dispatch(removeContactAC(id))
-}
 
 
-export const addContactAC = (title: string) => ({type: 'ADD-CONTACT', title} as const )
 
-export const addContactTC = (title: string) => (dispatch: ThunkDispatch<AppRootStateType, void, AnyAction>) => {
-    dispatch(addContactAC(title))
-}
-
-export const changeContactAC = (newValue: string, id: string) => ({type: 'CHANGE-CONTACT', newValue, id} as const)
-export const changeContactTC = (newValue: string, id: string) => (dispatch: ThunkDispatch<AppRootStateType, void, AnyAction>) => {
-    dispatch(changeContactAC(newValue, id))
-}
-
-export type ActionsType =
-    ReturnType<typeof removeContactAC>
-    | ReturnType<typeof addContactAC>
-    | ReturnType<typeof changeContactAC>
 
 

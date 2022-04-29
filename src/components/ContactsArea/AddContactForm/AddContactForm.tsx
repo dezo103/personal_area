@@ -5,7 +5,8 @@ import Card from '@mui/material/Card';
 
 import style from './AddContactForm.module.scss';
 import {useAppDispatch} from "../../../redux/store";
-import {addContactTC} from "../../../redux/contacts-reducer";
+import {addContactTC} from "../../../redux/creators";
+
 
 export const AddContactForm = () => {
 
@@ -16,7 +17,6 @@ export const AddContactForm = () => {
 
     const addItemHandler = () => {
         if (title.trim() !== '') {
-            // addItem(title);
             dispatch(addContactTC(title))
             setTitle('');
         } else {

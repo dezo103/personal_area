@@ -5,9 +5,9 @@ import IconButton from '@mui/material/IconButton';
 import {ContactPropsType} from '../../../../types/PropsTypes';
 import Card from "@mui/material/Card";
 import style from './Contact.module.scss';
-import {changeContactTC, removeContactTC} from "../../../../redux/contacts-reducer";
 import {useAppDispatch} from "../../../../redux/store";
 import {EditableSpan} from "./EditableSpan/EditableSpan";
+import {changeContactTC, removeContactTC} from "../../../../redux/creators";
 
 
 export const Contact = (props: ContactPropsType) => {
