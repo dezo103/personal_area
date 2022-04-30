@@ -55,7 +55,7 @@ export const logOutTC = () => (dispatch: ThunkDispatch<AppRootStateType, void, A
     dispatch(setIsLoggedInAC(false))
 }
 
-//App initializing creators
+//App status creators
 
 export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', error} as const)
 export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)

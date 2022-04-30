@@ -8,7 +8,7 @@ import {ContactType} from "../../types/DataTypes";
 import {Navigate} from "react-router-dom";
 
 
-export const ContactsArea = (props: any) => {
+export const ContactsArea = () => {
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
     const contacts = useSelector<AppRootStateType, Array<ContactType>>(state => state.contacts)
