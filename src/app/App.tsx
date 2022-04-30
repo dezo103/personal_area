@@ -10,26 +10,36 @@ import {ContactsArea} from '../components/ContactsArea/ContactsArea';
 import {Menu} from "@mui/icons-material";
 import {Container} from "@mui/material";
 import {Login} from "../components/Login/Login";
+import Button from '@mui/material/Button';
+import {useSelector} from "react-redux";
+import {AppRootStateType, useAppDispatch} from "../redux/store";
 
 
 function App() {
+
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
+
+    const dispatch = useAppDispatch()
+
+    const logoutHandler = () => {
+        //dispatch(logoutTC())
+        console.log('i am logout')
+    }
+
     return (
         <div className="App">
             <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" color="inherit" aria-label="menu">
-                        <Menu/>
-                    </IconButton>
+                <Toolbar className='mainToolbar'>
                     <Typography variant="h6">
                         Personal area
                     </Typography>
-                    {/*{ isLoggedIn && <Button color="inherit" onClick={logoutHandler}>Logout</Button>}*/}
+                    { isLoggedIn && <Button color="inherit"
+                                            onClick={logoutHandler}>Logout</Button>}
                 </Toolbar>
             </AppBar>
             <Routes>
                 <Route path="/" element={<ContactsArea/>}/>
                 <Route path="login" element={<Login/>}/>
-                {/*<Route path="/" element={<ContactsArea/>}/>*/}
             </Routes>
         </div>
     );
