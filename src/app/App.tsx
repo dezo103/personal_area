@@ -13,6 +13,8 @@ import {Login} from "../components/Login/Login";
 import Button from '@mui/material/Button';
 import {useSelector} from "react-redux";
 import {AppRootStateType, useAppDispatch} from "../redux/store";
+import {logOutTC} from "../redux/creators";
+
 
 
 function App() {
@@ -22,8 +24,7 @@ function App() {
     const dispatch = useAppDispatch()
 
     const logoutHandler = () => {
-        //dispatch(logoutTC())
-        console.log('i am logout')
+        dispatch(logOutTC())
     }
 
     return (

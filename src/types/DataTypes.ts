@@ -37,3 +37,10 @@ export type FormikErrorType = {
     email?: string
     password?: string
 }
+
+
+export type ResponseType = {
+    email: string,
+    password: string,
+    id: number
+}
