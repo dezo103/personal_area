@@ -3,11 +3,11 @@ import {v1} from "uuid";
 
 
 const initialState: Array<ContactType> = [
-    {id: v1(), name: 'Sun'},
-    {id: v1(), name: 'Sunflower'},
-    {id: v1(), name: 'flower'},
-    {id: v1(), name: 'flow'},
-    {id: v1(), name: 'low'},
+    {id: v1(), name: 'Dr Dre'},
+    {id: v1(), name: 'Snoop Dog'},
+    {id: v1(), name: 'Method Man'},
+    {id: v1(), name: 'Busta Rhymes'},
+    {id: v1(), name: 'DMX'}
 ]
 
 export const contactsReducer =
