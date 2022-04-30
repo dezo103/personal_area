@@ -1,4 +1,4 @@
-import {addContactAC, changeContactAC, removeContactAC} from "../redux/creators";
+import {addContactAC, changeContactAC, removeContactAC, setIsLoggedInAC} from "../redux/creators";
 
 export type ContactType = {
     id: string
@@ -7,6 +7,11 @@ export type ContactType = {
 
 export type isLoggedInType = {
     isLoggedIn: boolean
+}
+
+export type LoginParamsType = {
+    email: string
+    password: string
 }
 
 export type ContactsListPropsType = {
@@ -25,6 +30,7 @@ export type ActionsType =
     ReturnType<typeof removeContactAC>
     | ReturnType<typeof addContactAC>
     | ReturnType<typeof changeContactAC>
+    | ReturnType<typeof setIsLoggedInAC>
 
 
 export type FormikErrorType = {

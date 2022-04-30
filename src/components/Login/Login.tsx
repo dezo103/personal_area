@@ -11,14 +11,15 @@ import {useFormik} from "formik";
 import {FormikErrorType} from "../../types/DataTypes";
 import style from './Login.module.scss'
 import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../redux/store";
+import {AppRootStateType, useAppDispatch} from "../../redux/store";
 import {Navigate} from "react-router-dom";
+import {loginTC} from "../../redux/creators";
 
 export const Login = () => {
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
 
-    //const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const formik = useFormik({
         initialValues: {
@@ -43,8 +44,8 @@ export const Login = () => {
             return errors;
         },
         onSubmit: values => {
-            alert(JSON.stringify(values));
-            //dispatch(loginTC(values))
+            console.log(values)
+            dispatch(loginTC(values))
             formik.resetForm();
         },
     })
