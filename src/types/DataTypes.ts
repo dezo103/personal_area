@@ -5,6 +5,10 @@ export type ContactType = {
     name: string
 }
 
+export type isLoggedInType = {
+    isLoggedIn: boolean
+}
+
 export type ContactsListPropsType = {
     contacts: Array<ContactType>
 }
@@ -26,5 +30,4 @@ export type ActionsType =
 export type FormikErrorType = {
     email?: string
     password?: string
-    rememberMe?: boolean
 }

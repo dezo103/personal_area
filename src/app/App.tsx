@@ -29,6 +29,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<ContactsArea/>}/>
                 <Route path="login" element={<Login/>}/>
+                {/*<Route path="/" element={<ContactsArea/>}/>*/}
             </Routes>
         </div>
     );

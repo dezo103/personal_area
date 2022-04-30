@@ -2,9 +2,11 @@ import {AnyAction, applyMiddleware, combineReducers, legacy_createStore as creat
 import thunkMiddleware, {ThunkDispatch} from 'redux-thunk'
 import {contactsReducer} from "./contacts-reducer";
 import {useDispatch} from "react-redux";
+import {authReducer} from "./auth-reducer";
 
 const rootReducer = combineReducers({
-    contacts: contactsReducer
+    contacts: contactsReducer,
+    auth: authReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
