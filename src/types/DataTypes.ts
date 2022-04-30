@@ -1,4 +1,11 @@
-import {addContactAC, changeContactAC, removeContactAC, setIsLoggedInAC} from "../redux/creators";
+import {
+    addContactAC,
+    changeContactAC,
+    removeContactAC,
+    setAppErrorAC,
+    setAppStatusAC,
+    setIsLoggedInAC
+} from "../redux/creators";
 
 export type ContactType = {
     id: string
@@ -18,6 +25,12 @@ export type ContactsListPropsType = {
     contacts: Array<ContactType>
 }
 
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+export type InitialStateType = {
+    status: RequestStatusType
+    error: string | null
+}
+
 export type AddContactFormPropsType = {
     filterContacts: (value: string) => void
 }
@@ -31,13 +44,14 @@ export type ActionsType =
     | ReturnType<typeof addContactAC>
     | ReturnType<typeof changeContactAC>
     | ReturnType<typeof setIsLoggedInAC>
+    | ReturnType<typeof setAppErrorAC>
+    | ReturnType<typeof setAppStatusAC>
 
 
 export type FormikErrorType = {
     email?: string
     password?: string
 }
-
 
 export type ResponseType = {
     email: string,

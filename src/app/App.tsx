@@ -14,11 +14,15 @@ import Button from '@mui/material/Button';
 import {useSelector} from "react-redux";
 import {AppRootStateType, useAppDispatch} from "../redux/store";
 import {logOutTC} from "../redux/creators";
+import LinearProgress from '@mui/material/LinearProgress';
+import {ErrorSnackbar} from "../components/ErrorSnackbar/ErrorSnackbar";
+import {RequestStatusType} from "../types/DataTypes";
 
 
 
 function App() {
 
+    const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
 
     const dispatch = useAppDispatch()
@@ -29,6 +33,7 @@ function App() {
 
     return (
         <div className="App">
+            <ErrorSnackbar/>
             <AppBar position="static">
                 <Toolbar className='mainToolbar'>
                     <Typography variant="h6">
@@ -37,6 +42,9 @@ function App() {
                     { isLoggedIn && <Button color="inherit"
                                             onClick={logoutHandler}>Logout</Button>}
                 </Toolbar>
+                <div className='progressViewArea'>
+                    {status === 'loading' && <LinearProgress/>}
+                </div>
             </AppBar>
             <Routes>
                 <Route path="/" element={<ContactsArea/>}/>

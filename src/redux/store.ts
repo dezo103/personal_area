@@ -3,10 +3,12 @@ import thunkMiddleware, {ThunkDispatch} from 'redux-thunk'
 import {contactsReducer} from "./contacts-reducer";
 import {useDispatch} from "react-redux";
 import {authReducer} from "./auth-reducer";
+import {appReducer} from "./app-reducer";
 
 const rootReducer = combineReducers({
     contacts: contactsReducer,
-    auth: authReducer
+    auth: authReducer,
+    app: appReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));

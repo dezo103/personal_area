@@ -1,7 +1,7 @@
 import {ThunkDispatch} from "redux-thunk";
 import {AppRootStateType} from "./store";
 import {AnyAction} from "redux";
-import {LoginParamsType} from "../types/DataTypes";
+import {LoginParamsType, RequestStatusType} from "../types/DataTypes";
 import {authAPI} from "../api/semiFakeAPI";
 
 export const removeContactAC = (id: string) => ({type: 'REMOVE-CONTACT', id} as const)
@@ -23,12 +23,19 @@ export const changeContactTC = (newValue: string, id: string) => (dispatch: Thun
 
 export const setIsLoggedInAC = (isLoggedIn: boolean) => ({type: 'SET-IS-LOGIN', isLoggedIn} as const)
 export const loginTC = (data: LoginParamsType) => (dispatch: ThunkDispatch<AppRootStateType, void, AnyAction>) => {
+    dispatch(setAppStatusAC('loading'))
     authAPI.login(data).then(
         res  => {
             console.log(res.data)
-            let isLoggedFinallyIn: boolean
-            isLoggedFinallyIn = res.data.email === 'admin@area.ru' && res.data.password === '1234';
-            dispatch(setIsLoggedInAC(isLoggedFinallyIn))
+            if (res.data.email === 'admin@area.ru' && res.data.password === '1234') {
+                dispatch(setIsLoggedInAC(true))
+                dispatch(setAppStatusAC('succeeded'))
+            }
+            else {
+                dispatch(setIsLoggedInAC(false))
+                dispatch(setAppErrorAC(`invalid email:  "${res.data.email}"  or password`))
+                dispatch(setAppStatusAC('failed'))
+            }
         }
     ).catch((error) => {
         console.log(error)
@@ -36,8 +43,10 @@ export const loginTC = (data: LoginParamsType) => (dispatch: ThunkDispatch<AppRo
 }
 
 export const logOutTC = () => (dispatch: ThunkDispatch<AppRootStateType, void, AnyAction>) => {
+    dispatch(setAppStatusAC('loading'))
     authAPI.logout().then(
         res => {
+            dispatch(setAppStatusAC('succeeded'))
             console.log(res.data)
         }
     ).catch((error) => {
@@ -46,4 +55,7 @@ export const logOutTC = () => (dispatch: ThunkDispatch<AppRootStateType, void, A
     dispatch(setIsLoggedInAC(false))
 }
 
+//App initializing creators
 
+export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', error} as const)
+export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
