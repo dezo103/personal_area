@@ -26,7 +26,6 @@ export const Contact = (props: ContactPropsType) => {
         <Card style={{margin: '8px'}}>
             <li className={style.contactItem}>
                 <EditableSpan value={props.contactName} onChange={onTitleChangeHandler}/>
-                {/*<span>{props.contactName}</span>*/}
                 <IconButton onClick={onClickHandler}>
                     <Delete/>
                 </IconButton>

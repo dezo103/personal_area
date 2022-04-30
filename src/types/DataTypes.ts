@@ -17,9 +17,14 @@ export type SearchFormPropsType = {
     filterContacts: (value: string) => void
 }
 
-
 export type ActionsType =
     ReturnType<typeof removeContactAC>
     | ReturnType<typeof addContactAC>
     | ReturnType<typeof changeContactAC>
-//export type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType>
+
+
+export type FormikErrorType = {
+    email?: string
+    password?: string
+    rememberMe?: boolean
+}

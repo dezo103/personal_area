@@ -7,7 +7,7 @@ import {AppRootStateType} from "../../redux/store";
 import {ContactType} from "../../types/DataTypes";
 
 
-export const ContactsArea = () => {
+export const ContactsArea = (props: any) => {
 
     const contacts = useSelector<AppRootStateType, Array<ContactType>>(state => state.contacts)
     const [searchInputValue, setSearchInputValue] = useState('')

@@ -46,7 +46,6 @@ export const AddContactForm = (props: AddContactFormPropsType) => {
                        onChange={onChangeHandler}
                        onKeyPress={onKeyPressHandler}
                        helperText={error}
-                       //disabled={disabled}
                        error={!!error}
                        value={title}/>
             <Button variant='contained'
