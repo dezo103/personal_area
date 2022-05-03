@@ -2,10 +2,10 @@ import React from 'react';
 
 import {Contact} from './Contact/Contact';
 import style from './ContactsList.module.scss';
-import {ContactsListPropsType} from "../../../types/DataTypes";
+import {ContactsListPropsType} from '../../../types/DataTypes';
 
 
-export const ContactsList = (props: ContactsListPropsType) => {
+export const ContactsList = React.memo((props: ContactsListPropsType) => {
 
     return (
         <ul className = {style.contactList}>
@@ -14,4 +14,4 @@ export const ContactsList = (props: ContactsListPropsType) => {
                                         id = {c.id}/>)}
         </ul>
     );
-};
+})

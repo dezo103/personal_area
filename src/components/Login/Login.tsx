@@ -1,21 +1,21 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import {useFormik} from "formik";
-import {FormikErrorType} from "../../types/DataTypes";
-import style from './Login.module.scss'
-import {useSelector} from "react-redux";
-import {AppRootStateType, useAppDispatch} from "../../redux/store";
-import {Navigate} from "react-router-dom";
-import {loginTC} from "../../redux/creators";
+import {useFormik} from 'formik';
+import {useSelector} from 'react-redux';
+import {Navigate} from 'react-router-dom';
 
-export const Login = () => {
+import {FormikErrorType} from '../../types/DataTypes';
+import style from './Login.module.scss'
+import {AppRootStateType, useAppDispatch} from '../../redux/store';
+import {loginTC} from '../../redux/creators';
+
+
+export const Login = React.memo(() => {
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
 
@@ -43,17 +43,15 @@ export const Login = () => {
             return errors;
         },
         onSubmit: values => {
-            console.log(values)
             dispatch(loginTC(values))
             formik.resetForm();
         },
     })
 
     if(isLoggedIn) {
-        return <Navigate to={"/"}/>
+        return <Navigate to={'/'}/>
     }
-
-
+    
     return (
         <Grid container justifyContent={'center'}>
             <Grid item justifyContent={'center'} className={style.formContainer}>
@@ -66,18 +64,18 @@ export const Login = () => {
                         </FormLabel>
 
                         <FormGroup>
-                            <TextField label="Email"
-                                       margin="normal"
+                            <TextField label='Email'
+                                       margin='normal'
                                        {...formik.getFieldProps('email')}
                             />
                             {formik.touched.email && formik.errors.email &&
-                                <div style={{color: "red"}}>{formik.errors.email}</div>}
-                            <TextField type="password" label="Password"
-                                       margin="normal"
+                                <div style={{color: 'red'}}>{formik.errors.email}</div>}
+                            <TextField type='password' label='Password'
+                                       margin='normal'
                                        {...formik.getFieldProps('password')}
                             />
                             {formik.touched.password && formik.errors.password &&
-                                <div style={{color: "red"}}>{formik.errors.password}</div>}
+                                <div style={{color: 'red'}}>{formik.errors.password}</div>}
                             <Button type={'submit'} variant={'contained'} color={'primary'} >
                                 Login
                             </Button>
@@ -87,5 +85,5 @@ export const Login = () => {
             </Grid>
         </Grid>
     );
-};
+})
 

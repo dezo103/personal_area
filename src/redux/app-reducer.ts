@@ -1,4 +1,4 @@
-import {ActionsType, InitialStateType} from "../types/DataTypes";
+import {ActionsType, InitialStateType} from '../types/DataTypes';
 
 const initialState: InitialStateType = {
     status: 'idle',

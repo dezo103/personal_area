@@ -1,26 +1,26 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Delete} from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
+import Card from '@mui/material/Card';
 
 import {ContactPropsType} from '../../../../types/PropsTypes';
-import Card from "@mui/material/Card";
 import style from './Contact.module.scss';
-import {useAppDispatch} from "../../../../redux/store";
-import {EditableSpan} from "./EditableSpan/EditableSpan";
-import {changeContactTC, removeContactTC} from "../../../../redux/creators";
+import {useAppDispatch} from '../../../../redux/store';
+import {EditableSpan} from './EditableSpan/EditableSpan';
+import {changeContactTC, removeContactTC} from '../../../../redux/creators';
 
 
-export const Contact = (props: ContactPropsType) => {
+export const Contact = React.memo((props: ContactPropsType) => {
 
     const dispatch = useAppDispatch();
 
-    const onClickHandler = () => {
-        dispatch(removeContactTC(props.id))
-    }
+    const onClickHandler = useCallback(() => {
+            dispatch(removeContactTC(props.id))
+        }, [props.id])
 
-    const onTitleChangeHandler = (newValue: string) => {
+    const onTitleChangeHandler = useCallback((newValue: string) => {
         dispatch(changeContactTC(newValue, props.id))
-    }
+    }, [props.id])
 
     return (
         <Card style={{margin: '8px'}}>
@@ -32,5 +32,5 @@ export const Contact = (props: ContactPropsType) => {
             </li>
         </Card>
     );
-};
+})
 

@@ -1,29 +1,29 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
+import {Navigate} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 import {ContactsList} from './ContactsList/ContactsList';
 import {AddContactForm} from './AddContactForm/AddContactForm';
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../redux/store";
-import {ContactType} from "../../types/DataTypes";
-import {Navigate} from "react-router-dom";
+import {AppRootStateType} from '../../redux/store';
+import {ContactType} from '../../types/DataTypes';
 
 
-export const ContactsArea = () => {
+export const ContactsArea = React.memo(() => {
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
     const contacts = useSelector<AppRootStateType, Array<ContactType>>(state => state.contacts)
     const [searchInputValue, setSearchInputValue] = useState('')
 
-    const filterContacts = (value: string) => {
+    const filterContacts = useCallback((value: string) => {
         setSearchInputValue(value)
-    }
+    }, [])
 
     const filteredContacts = contacts.filter(c => {
         return c.name.toLowerCase().includes(searchInputValue.toLowerCase())
     })
 
     if(!isLoggedIn) {
-        return <Navigate to={"login"}/>
+        return <Navigate to={'login'}/>
     }
 
     return (
@@ -32,4 +32,4 @@ export const ContactsArea = () => {
             <AddContactForm filterContacts = {filterContacts}/>
         </div>
     );
-};
+})
